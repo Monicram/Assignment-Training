@@ -1,0 +1,66 @@
+.box-px {
+    width: 300px;
+    background: #f0f4ff;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+}
+.box-percent {
+    width: 50%;
+    background: #fff0f4;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+}
+.box-rem {
+    width: 20rem;
+    background: #f0fff4;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+}
+.box-vw {
+    width: 60vw;
+    background: #fffbf0;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border: 1px solid black;
+}
+html {
+    font-size: 16px;
+}
+.font-demo {
+    font-size: 12px;
+    margin-top: 20px;
+    border: 1px solid black;
+    padding: 10px;
+}
+.px-text {
+    font-size: 16px;
+}
+.rem-text {
+    font-size: 1rem;
+}
+.em-text {
+    font-size: 1.5em;
+}
+
+
+
+/* Task 1.1
+The 50% and 60vw boxes change their width when the browser window is resized.
+The 300px box stays the same width.
+The 20rem box usually stays the same width because it depends on the root font size.
+I  use px when I need an exact fixed size, like for icons or borders.
+Then rem for font sizes and layouts that should scale with the root font size.
+Next % when I want elements to resize based on their parent container.
+*/
+
+/* Task 1.2
+When html font-size is changed from 16px to 20px,
+the rem text becomes larger because it depends on the html font size.
+The px text stays the same because it has a fixed size.
+The em text depends on its parent (.font-demo), so it changes only if the parent's font size changes.
+rem uses the root (html) font size.
+em uses the font size of its parent element.
+*/

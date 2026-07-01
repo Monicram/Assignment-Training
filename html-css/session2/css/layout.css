@@ -1,0 +1,113 @@
+/* Mobile */
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+}
+
+header,
+footer {
+    background: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+}
+
+.navbar {
+    background: #444;
+    padding: 1rem;
+}
+
+.logo {
+    color: white;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+
+.nav-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+}
+
+.hero {
+    padding: 2rem;
+    text-align: center;
+    background: #f4f4f4;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: auto;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1rem;
+    padding: 1rem;
+}
+
+.card {
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 1rem;
+}
+
+/* Tablet */
+
+@media (min-width: 768px) {
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .logo {
+        margin-bottom: 0;
+    }
+
+    .nav-links {
+        flex-direction: row;
+        gap: 1.5rem;
+    }
+
+    .cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* Desktop */
+
+@media (min-width: 1024px) {
+
+    body {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .cards {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/*
+On mobile, everything is stacked in one column.
+On tablet, the navigation becomes a row and the cards are shown in 2 columns.
+On desktop, the page is centered and the cards are shown in 3 columns.
+*/
