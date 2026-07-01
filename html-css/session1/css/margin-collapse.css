@@ -1,0 +1,13 @@
+* { box-sizing: border-box; }
+
+.first {
+  background-color: #ffe0e0;
+  padding: 10px;
+  margin-bottom: 40px;
+}
+
+.second {
+  background-color: #e0e0ff;
+  padding: 10px;
+  margin-top: 20px;
+}

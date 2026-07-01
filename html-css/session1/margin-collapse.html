@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Margin Collapse</title>
+  <link rel="stylesheet" href="css/margin-collapse.css" />
+</head>
+<body>
+  <p class="first">First paragraph — margin-bottom: 40px</p>
+  <p class="second">Second paragraph — margin-top: 20px</p>
+</body>
+</html>
+
+
+<!--The actual gap is 40px, not 60px.
+This happens because vertical margins collapse, and the larger margin (40px) is used.
+Margin collapse does not happen when elements have padding, borders, or use display: flex or display: grid.-->

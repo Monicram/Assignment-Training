@@ -1,0 +1,76 @@
+body{
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+h1{
+    text-align: center;
+}
+
+section{
+    margin-bottom: 20px;
+}
+
+input,
+select,
+button{
+    padding: 8px;
+    margin: 5px 0;
+}
+
+button{
+    cursor: pointer;
+}
+
+ul{
+    list-style-type: none;
+    padding: 0;
+}
+
+li{
+    padding: 10px;
+    margin: 5px 0;
+    border: 1px solid black;
+}
+
+.done{
+    text-decoration: line-through;
+    color: green;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100%;
+}
+
+table,
+th,
+td{
+    border: 1px solid black;
+}
+
+th,
+td{
+    padding: 10px;
+    text-align: center;
+}
+
+#clear-all{
+    margin-top: 10px;
+}
+.done{
+    text-decoration: line-through;
+    color: green;
+}
+
+button{
+    margin:5px;
+}
+
+select{
+    padding:5px;
+}
+
+#counter{
+    font-weight:bold;
+}

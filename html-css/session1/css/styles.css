@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: sans-serif;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #333;
+}
+/* Task A — tag selector: style all h2 headings */
+h2 {
+    color: darkblue;
+    border-bottom: 2px solid gray;
+    padding-bottom: 5px;
+}
+
+/* Task B — class selector: create a highlight class */
+.highlight {
+    background-color: lightyellow;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+/* Task C — id selector: style a unique element */
+#contact-section {
+    background-color: lightgray;
+    padding: 15px;
+    border-radius: 8px;
+}
+
+p {
+  color: black;
+}
+
+.intro-text {
+  color: blue;
+}
+
+#about-paragraph {
+  color: green;
+}
+
+nav {
+    margin-top: 10px;
+}
+
+nav a {
+    margin-right: 15px;
+    color: blue;
+    text-decoration: none;
+}

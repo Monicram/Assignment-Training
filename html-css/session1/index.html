@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <title>Monica | Portfolio</title>
+        <link rel="stylesheet" href="css/styles.css" />
+    </head>
+    <body>
+        <h1>Hello World</h1>
+        <header>
+            <h1> Monica R</h1>
+            <nav>
+                <a href="#about">About</a>
+                <a href="#skills">Skills</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+  </nav>
+        </header>
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                <p class="intro-text" id="about-paragraph"> I am a Computer Science Engineering student interested in web development and backend programming.
+                I enjoy learning new technologies and building practical projects to improve my skills. </p>
+            </section>
+            <section id="skills">
+                <h2>Skills</h2>
+                <ul>
+                    <li>HTML</li>
+                    <li>CSS</li>
+                    <li class="highlight">JavaScript</li>
+                    <li>TypeScript</li>
+                </ul>
+            </section>
+            <section id="experience">
+                <h2>Experience</h2>
+                <ol>
+                    <li>Learned REST API development.</li>
+                    <li>Understood SOLID principles, DRY, KISS, and code quality concepts.</li>
+                    <li>Improved analytical thinking and problem-solving through internship activities.</li>
+                </ol>
+            </section>
+            <section id="contact">
+                 <h2 id="contact-section">Contact</h2>
+                <h2>Block vs Inline Demo</h2>
+                <!-- Block elements -->
+                <p>This is a paragraph — block element</p>
+                <p>This is another paragraph — notice it starts on a new line</p>
+                <!-- Inline elements -->
+                <p>
+                    This sentence has
+                    <strong>bold text</strong>,
+                    <em>italic text</em>, and a
+                    <a href="#">link</a>
+                    all flowing inline within the paragraph.
+                </p>
+                <a href="https://github.com/" target="_blank">Visit my GitHub</a>
+            </section>
+        </main>
+        <img src="https://placehold.co/300x200" alt="Placeholder profile image">
+        <footer>
+            <p> © 2024 Monica. All rights reserved.</p>
+        </footer>
+    </body>
+</html>
+    </body>
+</html>
+<!--Section 1 — HTML Document Structure-->
+<!--Task 1.1 — Build the Boilerplate-->
+
+<!-- The viewport meta tag makes the webpage fit the screen size of the device.
+It helps the website look responsive and display properly on mobiles, tablets, and desktops. -->
+
+<!--Task 1.3 — Block vs Inline-->
+
+<!--
+Block elements:
+1. <h2>
+2. <p>
+3. <ul>
+
+Inline elements:
+1. <a>
+2. <strong>
+3. <em>
+-->
+
+<!---Section 2 — Linking CSS to HTML-->
+
+<!-- The stylesheet is linked in the <head> so the browser loads the CSS before displaying the page.
+This ensures the page appears correctly styled from the beginning and avoids unstyled content. -->
+
+<!--Task 2.2 — CSS Selectors in Practice-->
+
+<!--If a class selector and a tag selector have conflicting styles,
+the class selector wins because it has higher specificity.-->
+
+<!--Task 2.3 — The Cascade in Action-->
+<!--The paragraph is green because the ID selector (#about-paragraph) has the highest specificity.
+To make the p tag rule win, remove the class and ID or use !important on the p rule.
+Specificity order (lowest to highest): Tag selector < Class selector < ID selector.-->
+
+<!--Section 3 — Semantic HTML-->
+
+<!-- Task 3.1 — Restructure With Semantic Tags-->
+ 
+<!--Semantic tags improve the structure and meaning of the webpage.
+They help search engines, screen readers, and developers understand the content, even though the page looks the same.-->
+
+<!--Task 3.2 — Add Navigation-->
+
+<!--The href="#about" links to the element with id="about".
+When clicked, the browser finds that id and automatically scrolls to that section.-->
+
+<!--Task 3.3 — Fix the Div Soup-->

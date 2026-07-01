@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Task Tracker</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>Task Tracker</h1>
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Add Task</h2>
+
+        <form id="task-form">
+
+            <label for="task-name">Task Name</label><br>
+            <input type="text" id="task-name" required><br><br>
+
+            <label for="priority">Priority</label><br>
+            <select id="priority" required>
+                <option value="">Select Priority</option>
+                <option>Low</option>
+                <option>Medium</option>
+                <option>High</option>
+            </select><br><br>
+
+            <label for="due-date">Due Date</label><br>
+            <input type="date" id="due-date" required><br><br>
+
+            <button type="submit">Add Task</button>
+
+        </form>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>Task List</h2>
+
+        <p id="counter">Showing 0 of 0 tasks</p>
+
+        <button id="all">All</button>
+        <button id="pending">Pending</button>
+        <button id="done">Done</button>
+
+        <br><br>
+
+        <label for="sort">Sort By:</label>
+        <select id="sort">
+            <option value="">Select</option>
+            <option value="priority">By Priority</option>
+            <option value="date">By Due Date</option>
+        </select>
+
+        <br><br>
+
+        <ul id="task-list"></ul>
+
+        <button id="clear-all">Clear All</button>
+
+    </section>
+
+    <hr>
+
+    <section>
+
+        <h2>Task Table</h2>
+
+        <table border="1">
+
+            <tr>
+                <th>Task</th>
+                <th>Priority</th>
+                <th>Due Date</th>
+                <th>Status</th>
+            </tr>
+
+            <tbody id="task-table-body">
+
+            </tbody>
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+    <p>Task Tracker</p>
+</footer>
+
+<script src="main.js"></script>
+
+</body>
+</html>
