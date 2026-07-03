@@ -1,20 +1,20 @@
-// const fs = require('fs')
+const fs = require('fs')
 
-// // Write a file
-// fs.writeFileSync('nodejs/session1/output.txt', 'Hello from Node.js file system!')
+// Write a file
+fs.writeFileSync('nodejs/session1/output.txt', 'Hello from Node.js file system!')
 
-// // Read it back
-// const content = fs.readFileSync('nodejs/session1/output.txt', 'utf8')
-// console.log("File content:", content)
+// Read it back
+const content = fs.readFileSync('nodejs/session1/output.txt', 'utf8')
+console.log("File content:", content)
 
-// // Append to it
-// fs.appendFileSync('nodejs/session1/output.txt', '\nThis line was appended.')
+// Append to it
+fs.appendFileSync('nodejs/session1/output.txt', '\nThis line was appended.')
 
-// // Read again
-// const updated = fs.readFileSync('nodejs/session1/output.txt', 'utf8')
-// console.log("Updated content:", updated)
+// Read again
+const updated = fs.readFileSync('nodejs/session1/output.txt', 'utf8')
+console.log("Updated content:", updated)
 
-// //writeFileSync creates a new file or replaces the existing content. appendFileSync adds new content to the end of the existing file.
+//writeFileSync creates a new file or replaces the existing content. appendFileSync adds new content to the end of the existing file.
 
 const fs = require('fs').promises;
 
