@@ -1,0 +1,22 @@
+{
+  "name": "session1",
+  "version": "1.0.0",
+  "main": "compare.js",
+  "dependencies": {
+    "dayjs": "^1.11.21"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node dates.js",
+    "hello": "node hello.js",
+    "info": "node system-info.js",
+    "dev": "nodemon dates.js"
+  },
+  "keywords": [],
+  "author": "Monica",
+  "license": "ISC",
+  "description": "Node.js Session 1 practice project",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
