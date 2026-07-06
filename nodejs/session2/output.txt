@@ -1,0 +1,2 @@
+Line 1 - written using fs.promises
+Line 2 - appended using fs.promises
