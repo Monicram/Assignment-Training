@@ -1,11 +1,14 @@
-import './App.css'
 import Greeting from './Greeting'
+import TsxRules from './TsxRules'
+import StyledCard from './StyledCard'
 
 function App() {
   return (
     <>
       <h1>Hello React</h1>
       <Greeting />
+      <TsxRules />
+      <StyledCard />
     </>
   )
 }
