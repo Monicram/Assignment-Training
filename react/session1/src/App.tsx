@@ -3,6 +3,8 @@ import TsxRules from './TsxRules'
 import StyledCard from './StyledCard'
 import Profile from './Profile'
 import SkillList from './SkillList'
+import ScoreCard from './ScoreCard'
+import StatusBadge from './StatusBadge'
 
 function App() {
   return (
@@ -13,6 +15,8 @@ function App() {
       <StyledCard />
       <Profile />
       <SkillList />
+      <ScoreCard />
+      <StatusBadge />
     </>
   )
 }
