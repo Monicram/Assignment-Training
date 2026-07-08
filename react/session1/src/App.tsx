@@ -1,6 +1,8 @@
 import Greeting from './Greeting'
 import TsxRules from './TsxRules'
 import StyledCard from './StyledCard'
+import Profile from './Profile'
+import SkillList from './SkillList'
 
 function App() {
   return (
@@ -9,6 +11,8 @@ function App() {
       <Greeting />
       <TsxRules />
       <StyledCard />
+      <Profile />
+      <SkillList />
     </>
   )
 }
