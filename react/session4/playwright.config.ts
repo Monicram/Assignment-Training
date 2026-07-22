@@ -6,7 +6,7 @@ declare const process: any;
 
 export default defineConfig({
   testDir: './tests',
-
+  expect: { timeout: 5_000 },     // assertion timeout — separate from test timeout
   // Runs all test files in parallel to reduce execution time.
   fullyParallel: true,
 
@@ -26,12 +26,19 @@ export default defineConfig({
 
     // Takes a screenshot only when a test fails.
     screenshot: 'only-on-failure',
+    video: 'on-first-retry',       // record a video when a test retries
+    headless: true,
   },
-
+  
   projects: [
   // Desktop Chrome provides a predefined browser configuration including
   // viewport size, user agent, and device pixel ratio for desktop Chrome.
   { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
+  { name: 'firefox',       use: { ...devices['Desktop Firefox'] } },
+  { name: 'webkit',        use: { ...devices['Desktop Safari'] } },
+  { name: 'Mobile Chrome', use: { ...devices['Pixel 5'] } },
+  { name: 'Mobile Safari', use: { ...devices['iPhone 12'] } },
+
 ],
 
   // Starts the local development server before running the Playwright tests.
@@ -48,3 +55,7 @@ export default defineConfig({
 // Examples of Playwright mobile device presets (used for mobile testing):
 // - 'iPhone 14'
 // - 'Pixel 7'
+
+// timeout: Limits the total time allowed for the entire test.
+// expect.timeout: Limits how long Playwright waits for a single assertion,
+// such as toBeVisible() or toHaveText(), before failing that assertion.
