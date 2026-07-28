@@ -1,0 +1,222 @@
+Section 1 – Reading Existing APIs 
+
+Task 1.1 
+
+1.What is the status code?
+200 OK
+2.What is the Content-Type header value?
+application/json; charset=utf-8
+3.How many users are returned? (count the `"id"` fields in the body)
+10 users
+4.UWhat is the URL structure — collection or single resource?
+Collection resource (/users)
+
+Task 1.2 
+
+1.What status code did the second request return?
+404 Not Found
+2.What was in the response body for the 404?
+{} (empty JSON object)
+3.What does this tell you about how this API handles "not found"?
+It returns 404 Not Found with an empty JSON object.
+
+Task 1.3 
+
+1.How many posts were returned?
+10 posts
+2.Which part is the path?
+/posts
+3.Which part is the query string?
+?userId=1
+4.Could you use a path parameter instead?
+Yes. /users/1/posts
+
+Do both return the same results? Which URL style do you prefer and why?
+Yes, both return the same results. I prefer /users/1/posts because it clearly shows that the posts belong to user 1.
+
+Section 2 – HTTP Methods
+
+Task 2.1 
+
+1.What status code was returned?
+201 Created
+2.What is in the response body? What id was assigned?
+The response body contains the title, body, userId, and the assigned id = 101.
+3.Did the Location header appear?
+No, the Location header did not appear.
+
+comment:
+If I send the same POST request again, it will create another new resource. 
+A well-designed API should return 409 Conflict if duplicate resources are not allowed.
+
+Task 2.2 
+
+1.What fields appear in the PUT response body vs the PATCH response body?
+PUT: id, title, body, userId (all fields are replaced).
+PATCH: Only the title is updated, while the other fields remain unchanged.
+2.Why did PATCH only need one field in the body?
+Because PATCH updates only the specified field instead of replacing the entire resource.
+3.When would you choose PUT over PATCH in a real intern dashboard API?
+I would use PUT when I want to replace all the intern details. I would use PATCH when I only want to update one field, such as the score or attendance.
+
+Task 2.3 
+
+1.What status code was returned?
+200 OK
+2.What was in the response body?
+{} (empty JSON object)
+3.Is 200 or 204 more appropriate for a successful DELETE? Why?
+204 No Content is more appropriate because the resource is deleted successfully and no response body is needed.
+
+Section 3 – Status Codes
+
+Task 3.1 
+Scenario	                                                       Status Code	                    Reason
+GET /interns – 15 interns found	                                    200 OK	                    Request successful.
+POST /interns – intern created successfully	                        201 Created	                New intern is created.
+DELETE /interns/42 – deleted, no body needed	                    204 No Content	            Deleted successfully, no response body.
+GET /interns/9999 – this intern does not exist	                    404 Not Found	            Resource not found.
+POST /interns – request body is missing name field	                400 Bad Request	            Required field is missing.
+GET /interns – user is not logged in	                            401 Unauthorized	        User is not authenticated.
+GET /interns/42 – user is logged in but only admins can see this	403 Forbidden	            User is authenticated but does not have permission.
+POST /interns – database crashed	                                500 Internal Server Error	Server-side error.
+
+Task 3.2
+
+Bug A
+200 OK
+{ "error": "Intern not found" }
+Correct: 404 Not Found
+
+Bug B
+200 OK
+{ "id": 44, "name": "Priya" }
+Correct: 201 Created
+
+Bug C
+200 OK
+{ "message": "deleted" }
+Correct: 204 No Content
+
+Bug D
+403 Forbidden
+Correct: 401 Unauthorized
+
+comment:
+Returning 200 OK with an error message breaks API consumers because the frontend treats the request as successful. 
+The frontend may continue processing the response instead of handling it as an error.
+
+Section 4 – Parameters
+
+Task 4.1 
+
+1.Scenario A: Get a specific intern by ID
+Correct URL: /interns/42
+2.Scenario B: Get interns whose role is "Frontend"
+Correct URL: /interns?role=Frontend
+3.Scenario C: Get the first 5 interns, sorted by score descending
+Correct URL: /interns?limit=5&sort=score&order=desc
+4.Scenario D: Get attendance records for intern 42
+Correct URL: /interns/42/attendance
+5.Scenario E: Get interns whose name contains "Rahu"
+Correct URL: /interns?name=Rahu
+
+Task 4.2 
+
+1.Did the fake token cause a 401? Why not?
+No. JSONPlaceholder does not validate the Authorization header, so it returned 200 OK.
+2.In a real API, what would the server do with the Authorization header?
+The server checks whether the token is valid and whether the user is authenticated.
+3.What is the difference between 401 and 403?
+401 Unauthorized: User is not authenticated or the token is invalid.
+403 Forbidden: User is authenticated but does not have permission to access the resource.
+
+Task 4.3 
+
+  Action Method	                        URL	                    Request Body	            Expected Status
+List all interns	                GET	/interns	               No body	                    200 OK
+Get intern #7	                    GET	/interns/7	               No body	                    200 OK
+Create a new intern	                POST /interns	        name, role, score, isPresent	    201 Created
+Update intern #7's score only	    PATCH /interns/7	        { "score": 95 }	                200 OK
+Replace intern #7 entirely	        PUT	/interns/7	        Complete intern details	            200 OK
+Delete intern #7	                DELETE /interns/7	           No body	                    204 No Content
+List interns with role = Backend    GET	/interns?role=Backend	   No body	                    200 OK
+Get all attendance for intern #7	GET	/interns/7/attendance	   No body	                    200 OK
+comment:
+I would use /interns/{id}/attendance because attendance belongs to a specific intern. It makes the API easy to understand and organize.
+
+Section 5 – curl Mastery
+
+Task 5.1
+
+1.Lines starting with >
+These are the request headers sent by curl.
+2.Lines starting with <
+These are the response headers received from the server.
+3.The blank line separates
+The headers from the response body.
+4.Host header value
+jsonplaceholder.typicode.com
+
+Task 5.2 
+
+comment:
+In a real application, the service layer should make the POST request because it handles the business logic and communicates with the API. 
+The UI component only calls the service layer.
+
+Task 5.3 
+
+1.What happened when Content-Type was missing? Did it work? Should it?
+The request worked, but the JSON was not parsed correctly. In a production API, it should return an error because the Content-Type header is missing.
+2.What status code did the 404 endpoint return?
+404 Not Found
+3.What should a production API return in the body of a 400 or 404 response?
+A proper error message, like this
+
+{
+  "error": "Resource not found",
+  "status": 404
+}
+
+{
+  "error": "Bad Request",
+  "status": 400
+}
+
+Section 6 – Design Challenge
+
+Task 6.1 
+
+Mistake A
+GET /getAllInterns
+Correct: GET /interns
+
+Mistake B
+POST /interns/delete/42
+Correct: DELETE /interns/42
+
+Mistake C
+GET /createIntern?name=Rahul&role=Frontend&score=88
+Correct: POST /interns
+
+Mistake D
+POST /interns/42/updateScore
+Correct: PATCH /interns/42
+
+Mistake E
+DELETE /interns?id=42
+Correct: DELETE /interns/42
+
+Task 6.2 
+
+    Action Method	                              URL	                      Expected Status
+List all projects	                        GET	/projects	                    200 OK
+Get a specific project	                    GET	/projects/1	                    200 OK
+Create a project	                        POST /projects	                    201 Created
+List all projects an intern is assigned to	GET	/interns/7/projects	            200 OK
+Assign an intern to a project	            POST /projects/1/interns/7	        201 Created
+Remove an intern from a project	            DELETE /projects/1/interns/7	    204 No Content
+
+comment:
+I would use POST /projects/{id}/interns/{internId} because the intern is being assigned to a specific project. 
+The owner resource depends on the relationship you want to manage. If the project owns the assignment, use /projects; if the intern owns it, use /interns.
