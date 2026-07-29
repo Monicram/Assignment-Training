@@ -57,7 +57,8 @@ PATCH: Only the title is updated, while the other fields remain unchanged.
 2.Why did PATCH only need one field in the body?
 Because PATCH updates only the specified field instead of replacing the entire resource.
 3.When would you choose PUT over PATCH in a real intern dashboard API?
-I would use PUT when I want to replace all the intern details. I would use PATCH when I only want to update one field, such as the score or attendance.
+I would use PUT when I want to replace all the intern details. 
+I use PATCH when I only want to update one field, such as the score or attendance.
 
 Task 2.3 
 
