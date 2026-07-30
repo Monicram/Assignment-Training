@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for components/ThemedCard.tsx</title>
+    <title>Code coverage report for hooks/useInternSearch.ts</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../prettify.css" />
     <link rel="stylesheet" href="../base.css" />
@@ -19,7 +19,7 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../index.html">All files</a> / <a href="index.html">components</a> ThemedCard.tsx</h1>
+        <h1><a href="../index.html">All files</a> / <a href="index.html">hooks</a> useInternSearch.ts</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
@@ -30,16 +30,16 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">70% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/10</span>
+                <span class='fraction'>1/1</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
@@ -91,17 +91,9 @@
 <a name='L26'></a><a href='#L26'>26</a>
 <a name='L27'></a><a href='#L27'>27</a>
 <a name='L28'></a><a href='#L28'>28</a>
-<a name='L29'></a><a href='#L29'>29</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">14x</span>
+<a name='L29'></a><a href='#L29'>29</a>
+<a name='L30'></a><a href='#L30'>30</a>
+<a name='L31'></a><a href='#L31'>31</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -117,37 +109,51 @@
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useTheme } from '../contexts/theme-context'
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { useMemo } from 'react'
+import { filterInterns } from '../utils/intern-utils'
 &nbsp;
-interface ThemedCardProps {
-  name:  string
+interface Intern {
+  id: number
+  name: string
   score: number
+  role: string
+  isPresent: boolean
 }
 &nbsp;
-function ThemedCard({ name, score }: ThemedCardProps) {
-  const { theme } = useTheme()
-&nbsp;
-  return (
-    &lt;div style={{
-      background:   theme === 'light' ? '#ffffff' : <span class="branch-1 cbranch-no" title="branch not covered" >'#2a2a2a',</span>
-      color:        theme === 'light' ? '#000'    : <span class="branch-1 cbranch-no" title="branch not covered" >'#eee',</span>
-      border:       `1px solid ${theme === 'light' ? '#ddd' : <span class="branch-1 cbranch-no" title="branch not covered" >'#444'}`,</span>
-      padding:      '12px',
-      margin:       '8px 0',
-      borderRadius: '4px',
-    }}&gt;
-      &lt;h3&gt;{name}&lt;/h3&gt;
-      &lt;p&gt;Score: {score}&lt;/p&gt;
-      &lt;p style={{ color: score &gt;= 50 ? 'green' : 'red' }}&gt;
-        {score &gt;= 50 ? 'Pass' : 'Fail'}
-      &lt;/p&gt;
-    &lt;/div&gt;
+function useInternSearch(
+  interns: Intern[],
+  searchTerm: string,
+  filter: typeof filterInterns = filterInterns
+): Intern[] {
+  return useMemo(
+    () =&gt; filter(interns, searchTerm),
+    [interns, searchTerm, filter]
   )
 }
 &nbsp;
-export default ThemedCard</pre></td></tr></table></pre>
+export default useInternSearch
+// useMemo avoids filtering on every render.It will render whenever there is a change.
+// Filtering only runs when interns or search changes
+&nbsp;
+// Testability — useInternSearch.ts
+// Q1 Predictable output? YES — the same interns and search term always produce the same filtered list and statistics.
+// Q2 No external deps? YES — no network, database, timers, or browser APIs are used.
+// Q3 Dependencies injectable? YES — interns are passed as input and search state is controlled within the hook.
+// Verdict: HIGHLY TESTABLE</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->
             </div><!-- /wrapper -->
