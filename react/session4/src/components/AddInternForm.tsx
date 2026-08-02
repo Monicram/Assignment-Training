@@ -7,8 +7,7 @@ function AddInternForm() {
 
   function handleSubmit(): void {
     if (!isValid()) return
-    // addIntern expects the intern data without an id (id is assigned internally)
-    addIntern(form)
+    addIntern({ id: interns.length + 1, ...form })
     handleReset()
   }
 
