@@ -1,0 +1,26 @@
+{
+  "name": "training-assignment",
+  "version": "1.0.0",
+  "description": "All the Assignments and Tasks",
+  "main": "index.js",
+  "scripts": {
+    "test:e2e":        "playwright test",
+    "test:e2e:ui":     "playwright test --ui",
+    "test:e2e:headed": "playwright test --headed",
+    "test:e2e:debug":  "playwright test --debug"},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Monicram/Assignment-Training.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Monicram/Assignment-Training/issues"
+  },
+  "homepage": "https://github.com/Monicram/Assignment-Training#readme",
+  "devDependencies": {
+    "@playwright/test": "^1.61.1",
+    "@types/node": "^26.1.1"
+  }
+}
