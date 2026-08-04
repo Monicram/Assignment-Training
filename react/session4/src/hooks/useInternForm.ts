@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { validateInternForm } from '../utils/intern-validation'
 
 interface InternFormState {
   name:      string
@@ -27,12 +28,22 @@ function useInternForm(): UseInternFormReturn {
     e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>
   ): void {
     const { name, value, type } = e.target
+
+    // Fail Fast Check: Ensure target has a valid field name
+    if (!name || !(name in initialForm)) {
+      throw new Error(`handleChange: Invalid or missing form field name: "${name}"`)
+    }
+
     setForm(prev => ({
       ...prev,
       [name]: type === 'checkbox'
         ? (e.target as HTMLInputElement).checked
-        : name === 'score' ? Number(value) : value,
+        : name === 'score' 
+          ? Number(value) 
+          : value,
     }))
+
+    if (error) setError('')
   }
 
   function handleReset(): void {
@@ -41,16 +52,28 @@ function useInternForm(): UseInternFormReturn {
   }
 
   function isValid(): boolean {
-    if (!form.name.trim()) { setError('Name is required'); return false }
-    if (form.score < 0 || form.score > 100) { setError('Score must be 0–100'); return false }
-    setError('')
-    return true
+    try {
+      // Validate required domain fields rather than letting defaults mask invalid state
+      validateInternForm(form.name, form.score)
+      setError('')
+      return true
+    } catch (err) {
+      if (err instanceof Error) {
+        setError(err.message)
+      } else {
+        setError('An unknown error occurred during validation')
+      }
+      return false
+    }
   }
 
   return { form, error, handleChange, handleReset, isValid }
 }
 
 export default useInternForm
+
+// Task 2.3
+// The default (like defaulting role to '' or 'Unknown' or score to 0) was almost always masking a caller error.
 
 // UseInternFormReturn defines what the hook returns.
 // It improves type safety and makes the hook easier to use.
