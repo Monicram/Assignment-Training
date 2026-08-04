@@ -27,3 +27,6 @@ export default function SummaryBar() {
     </div>
   )
 }
+
+// This file calculates intern statistics and renders the summary bar UI.
+// Concerns mixed (if any): Mixes UI rendering with data calculation logic.

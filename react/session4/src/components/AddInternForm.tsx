@@ -33,3 +33,6 @@ function AddInternForm() {
 }
 
 export default AddInternForm
+
+// This file renders the form UI for adding a new intern.
+// Concerns mixed (if any): None.

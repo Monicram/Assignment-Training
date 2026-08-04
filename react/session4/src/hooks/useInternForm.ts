@@ -77,3 +77,6 @@ export default useInternForm
 
 // UseInternFormReturn defines what the hook returns.
 // It improves type safety and makes the hook easier to use.
+
+// This file manages form input state and validation logic for creating an intern.
+// Concerns mixed (if any): None.

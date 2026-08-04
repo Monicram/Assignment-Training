@@ -1,8 +1,3 @@
-// Silent failure audit — useInternSearch.ts
-// Pattern 1: Silent default on division by zero — `avg` calculation defaults to `0` when `interns` array is empty (`interns.length > 0 ? ... : 0`), masking the absence of statistical data.
-// Pattern 2: Null/undefined safety omission — `i.name.toLowerCase()` assumes `i.name` is always a valid string. If `i.name` is null/undefined, it will throw a runtime TypeError instead of providing explicit guard/validation.
-// Pattern 3: Unfiltered missing property fallbacks — `filtered` assumes `interns` is an array; passing null or undefined will break the hook rather than handling state or throwing a domain error.
-
 import { useState, useMemo } from 'react'
 
 interface Intern {
@@ -58,3 +53,6 @@ export default useInternSearch
 // ambiguity between an actual class average score of 0 and a lack of data. UI components or reporting tools will render 
 // "Average Score: 0%" instead of indicating "No Data Available" or an invalid calculation state, leading users to believe 
 // candidates scored zero points.
+
+// This file filters the list of interns based on a search term.
+// Concerns mixed (if any): None.

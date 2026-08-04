@@ -1,111 +1,47 @@
-import { createContext, useContext, useState, useEffect, type ReactNode } from 'react'
+import { createContext, useContext,type ReactNode } from 'react'
+import type { Intern, InternFormState } from '../types/intern'
+import { useInternRepository } from '../repositories/intern-repository'
+import {
+  createIntern,
+  calculateAverageScore,
+} from '../services/intern-service'
 
-interface Intern {
-  id: number; name: string; score: number; role: string; isPresent: boolean
-}
-
-interface InternContextType {
-  interns:      Intern[]
-  isLoading:    boolean
-  error:        string | null
-  addIntern:    (intern: Intern) => void
+interface InternContextValue {
+  interns: Intern[]
+  averageScore: number
+  addIntern: (form: InternFormState) => void
   removeIntern: (id: number) => void
 }
 
-// Task 6.1 — Boundary validation function
-export function validateInternResponse(data: unknown): Intern[] {
-  if (!Array.isArray(data)) {
-    throw new Error(`validateInternResponse: expected array, got: ${typeof data}`)
-  }
-
-  return data.map((item, index) => {
-    if (typeof item?.name !== 'string' || !item.name.trim()) {
-      throw new Error(`validateInternResponse: item[${index}].name is invalid`)
-    }
-    if (typeof item?.score !== 'number' || Number.isNaN(item.score) || item.score < 0 || item.score > 100) {
-      throw new Error(`validateInternResponse: item[${index}].score is invalid, got: ${item?.score}`)
-    }
-    return item as Intern
-  })
-}
-
-const InternContext = createContext<InternContextType | null>(null)
+const InternContext = createContext<InternContextValue | null>(null)
 
 export function InternProvider({ children }: { children: ReactNode }) {
-  const [interns,   setInterns]   = useState<Intern[]>([])
-  const [isLoading, setIsLoading] = useState<boolean>(true)
-  const [error,     setError]     = useState<string | null>(null)
+  const repo = useInternRepository()
 
-  useEffect(() => {
-    let isMounted = true
+  const value: InternContextValue = {
+    interns: repo.interns,
+    averageScore: calculateAverageScore(repo.interns),
 
-    async function loadInterns() {
-      try {
-        await new Promise((resolve) => setTimeout(resolve, 800))
-        
-        const rawData: unknown = [
-          { id: 1, name: 'Rahul', score: 92, role: 'Frontend',  isPresent: true  },
-          { id: 2, name: 'Priya', score: 78, role: 'Backend',   isPresent: true  },
-          { id: 3, name: 'Amit',  score: 45, role: 'Frontend',  isPresent: false },
-          { id: 4, name: 'Sneha', score: 95, role: 'Fullstack', isPresent: true  },
-        ]
+    addIntern: (form: InternFormState) => {
+      const intern = createIntern(form)
+      repo.add(intern)
+    },
 
-        // TASK 6.1: Validate boundary data BEFORE setting state
-        const validatedData = validateInternResponse(rawData)
-
-        if (isMounted) {
-          setInterns(validatedData)
-          setIsLoading(false)
-        }
-      } catch (err) {
-        if (isMounted) {
-          const message = err instanceof Error ? err.message : String(err)
-          setError(`fetchInterns: failed to load interns — ${message}`)
-          setIsLoading(false)
-        }
-      }
-    }
-
-    loadInterns()
-
-    return () => {
-      isMounted = false
-    }
-  }, [])
-
-  function addIntern(intern: Intern): void {
-    // GUARD CLAUSES: Run at the very top before any allocations or state updates
-    if (!intern) {
-      throw new Error('addIntern: intern object is required')
-    }
-    if (!intern.name || !intern.name.trim()) {
-      throw new Error('addIntern: Name is required')
-    }
-    if (typeof intern.score !== 'number' || Number.isNaN(intern.score) || intern.score < 0 || intern.score > 100) {
-      throw new Error('addIntern: Score must be a valid number between 0 and 100')
-    }
-
-    // WORK: Only executed if all guards pass
-    setInterns(prev => [...prev, { ...intern, name: intern.name.trim() }])
+    removeIntern: (id: number) => repo.remove(id),
   }
 
-  function removeIntern(id: number): void {
-    if (typeof id !== 'number' || id <= 0) {
-      throw new Error(`removeIntern: expected positive number id, got: ${id}`)
-    }
-    setInterns(prev => prev.filter(i => i.id !== id))
-  }
-  
   return (
-    <InternContext.Provider value={{ interns, isLoading, error, addIntern, removeIntern }}>
+    <InternContext.Provider value={value}>
       {children}
     </InternContext.Provider>
   )
 }
 
-export function useInterns(): InternContextType {
+export function useInterns() {
   const context = useContext(InternContext)
-  if (!context) throw new Error('useInterns must be used inside InternProvider')
+  if (!context) {
+    throw new Error('useInterns must be used within an InternProvider')
+  }
   return context
 }
 
@@ -136,3 +72,6 @@ export function useInterns(): InternContextType {
 // If the data fetch fails or throws inside `useEffect`, `setIsLoading(false)` is never called. The UI gets trapped in 
 // a permanent loading state without showing an error message to the user. Additionally, functions like `addIntern` return `void` 
 // and do not indicate whether the operation succeeded on a server backend, leaving the UI state out of sync with real data.
+
+// This file manages global intern state and provides actions to add, remove, and fetch interns.
+// Concerns mixed (if any): Mixes state management, API data fetching, error handling, and data validation.
