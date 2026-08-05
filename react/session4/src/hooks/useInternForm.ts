@@ -38,8 +38,8 @@ function useInternForm(): UseInternFormReturn {
       ...prev,
       [name]: type === 'checkbox'
         ? (e.target as HTMLInputElement).checked
-        : name === 'score' 
-          ? Number(value) 
+        : name === 'score'
+          ? Number(value)
           : value,
     }))
 
@@ -52,19 +52,18 @@ function useInternForm(): UseInternFormReturn {
   }
 
   function isValid(): boolean {
-    try {
-      // Validate required domain fields rather than letting defaults mask invalid state
-      validateInternForm(form.name, form.score)
-      setError('')
-      return true
-    } catch (err) {
-      if (err instanceof Error) {
-        setError(err.message)
-      } else {
-        setError('An unknown error occurred during validation')
-      }
+    // 1. Call the pure validation function
+    const validationError = validateInternForm(form.name, form.score)
+    
+    // 2. If it returns an error string, set state and fail validation
+    if (validationError) {
+      setError(validationError)
       return false
     }
+
+    // 3. Otherwise, clear errors and pass validation
+    setError('')
+    return true
   }
 
   return { form, error, handleChange, handleReset, isValid }
@@ -79,4 +78,5 @@ export default useInternForm
 // It improves type safety and makes the hook easier to use.
 
 // This file manages form input state and validation logic for creating an intern.
-// Concerns mixed (if any): None.
+// Concerns mixed (if any): None. 
+

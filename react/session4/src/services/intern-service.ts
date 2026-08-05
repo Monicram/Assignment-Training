@@ -1,3 +1,6 @@
+// Import our single source of truth for validation
+import { validateInternForm as coreValidate } from '../utils/intern-validation'
+
 export interface Intern {
   id: number
   name: string
@@ -29,19 +32,9 @@ export function createIntern(
 }
 
 // Returns an error string, or null if the form is valid.
-export function validateInternForm(
-  form: InternFormState
-): string | null {
-  if (!form.name || form.name.trim() === '') {
-    return 'Name is required'
-  }
-  if (typeof form.score !== 'number' || isNaN(form.score)) {
-    return 'Score must be a number'
-  }
-  if (form.score < 0 || form.score > 100) {
-    return 'Score must be between 0 and 100'
-  }
-  return null
+// Task 4.1: Replaced duplicated logic with a call to the shared utility
+export function validateInternForm(form: InternFormState): string | null {
+  return coreValidate(form.name, form.score)
 }
 
 // Returns the average score, or 0 for an empty list.
@@ -70,3 +63,12 @@ export function filterInterns(
       i.role.toLowerCase().includes(trimmed)
   )
 }
+
+
+// Task 4.1
+// Where was the duplication?
+// The validation logic for names and scores was duplicated. It existed both here in `intern-service.ts` and in the new `src/utils/intern-validation.ts` file we created earlier.
+// What is the risk of leaving it in?
+// Shotgun Surgery/Inconsistency. If the company changes the maximum score to 150, a developer might update one file and forget the other. The UI might allow a score that the service later rejects, causing a confusing user experience.  
+// What does removing it make easier to change in the future?
+// We now have a Single Source of Truth. If validation rules change, we only have to update the logic in one single place (`src/utils/intern-validation.ts`).

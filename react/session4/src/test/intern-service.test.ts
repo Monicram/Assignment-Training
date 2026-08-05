@@ -1,20 +1,3 @@
-
-  export interface Intern {
-    id: number
-    name: string
-    score: number
-    isPresent: boolean
-    role: string
-  }
-
-  export interface InternFormState {
-    name: string
-    score: number
-    isPresent: boolean
-    role: string
-  }
-
-
 import { describe, it, expect } from 'vitest'
 import {
   createIntern,
@@ -23,28 +6,43 @@ import {
   getScoreLabel,
   filterInterns,
 } from '../services/intern-service'
+import type { Intern, InternFormState } from '../services/intern-service'
+
+// --- TEST FACTORIES ---
+// These allow us to create valid objects while only specifying the fields we care about testing
+const makeIntern = (overrides: Partial<Intern> = {}): Intern => ({
+  id: 1,
+  name: 'Default Intern',
+  score: 80,
+  isPresent: true,
+  role: 'Dev',
+  ...overrides,
+})
+
+const makeForm = (overrides: Partial<InternFormState> = {}): InternFormState => ({
+  name: 'Jane Doe',
+  score: 85,
+  isPresent: true,
+  role: 'Frontend Developer',
+  ...overrides,
+})
 
 describe('intern-service', () => {
-  const validForm: InternFormState = {
-    name: 'Jane Doe',
-    score: 85,
-    isPresent: true,
-    role: 'Frontend Developer',
-  }
+  const validForm = makeForm()
 
   const sampleInterns: Intern[] = [
-    { id: 1, name: 'Alice Smith', score: 90, isPresent: true, role: 'Developer' },
-    { id: 2, name: 'Bob Jones', score: 40, isPresent: false, role: 'Designer' },
+    makeIntern({ id: 1, name: 'Alice Smith', score: 90, role: 'Developer' }),
+    makeIntern({ id: 2, name: 'Bob Jones', score: 40, isPresent: false, role: 'Designer' }),
   ]
 
   describe('createIntern', () => {
     it('generates an id, trims the name, and rounds the score', () => {
-      const form: InternFormState = {
+      // We only override the fields we are specifically testing the transformation of
+      const form = makeForm({
         name: '   John Doe   ',
         score: 88.6,
-        isPresent: true,
         role: 'QA Engineer',
-      }
+      })
       const intern = createIntern(form, () => 123)
 
       expect(intern.id).toBe(123)
@@ -57,15 +55,15 @@ describe('intern-service', () => {
 
   describe('validateInternForm', () => {
     it('returns error for empty name', () => {
-      const form = { ...validForm, name: '   ' }
+      const form = makeForm({ name: '   ' })
       expect(validateInternForm(form)).toBe('Name is required')
     })
 
     it('returns error for score > 100', () => {
-      const form = { ...validForm, score: 105 }
-      expect(validateInternForm(form)).toBe('Score must be between 0 and 100')
+      const form = makeForm({ score: 105 })
+      expect(validateInternForm(form)).toBe('Score must be 0–100') 
     })
-
+    
     it('returns null when valid', () => {
       expect(validateInternForm(validForm)).toBeNull()
     })
@@ -77,10 +75,11 @@ describe('intern-service', () => {
     })
 
     it('returns correct average and rounds correctly', () => {
+      // Look how clean this is! We only care about scores here, so we only provide scores.
       const interns: Intern[] = [
-        { id: 1, name: 'A', score: 80, isPresent: true, role: 'Dev' },
-        { id: 2, name: 'B', score: 85, isPresent: true, role: 'Dev' },
-        { id: 3, name: 'C', score: 90, isPresent: true, role: 'Dev' },
+        makeIntern({ score: 80 }),
+        makeIntern({ score: 85 }),
+        makeIntern({ score: 90 }),
       ]
       expect(calculateAverageScore(interns)).toBe(85)
     })
@@ -124,3 +123,12 @@ describe('intern-service', () => {
     })
   })
 })
+
+
+// Task 4.2
+  
+// How many tests shared the duplicated setup?
+// At least 5 `Intern` objects and 4 `InternFormState` objects were manually constructed from scratch across the various tests.
+  
+// Does a test factory make individual tests easier to read?
+// Yes, significantly. A factory hides the irrelevant boilerplate data. For example, in the `calculateAverageScore` test, the factory allows us to define only the `score` property, which makes it instantly clear to the reader that the score is the only variable that matters for that specific test block.

@@ -1,21 +1,26 @@
 import { assert } from './assert'
 
-export function validateInternForm(name: string, score: number): void {
+const MIN_SCORE = 0;
+const MAX_SCORE = 100;
+
+export function validateInternForm(name: string, score: number): string | null {
   // Precondition assertions (Guard against non-string / non-number programmer errors)
   assert(name !== null && name !== undefined, 'Name is required')
   assert(typeof name === 'string', `validateInternForm: name must be a string, got: ${typeof name}`)
   assert(typeof score === 'number', `validateInternForm: score must be a number, got: ${typeof score}`)
 
-  // Business logic guard clauses (throw user-friendly error strings)
+  // Business logic guard clauses (return user-friendly error strings)
   if (!name.trim()) {
-    throw new Error('Name is required')
+    return 'Name is required'
   }
 
-  if (Number.isNaN(score) || score < 0 || score > 100) {
-    throw new Error('Score must be 0–100')
+  if (Number.isNaN(score) || score < MIN_SCORE || score > MAX_SCORE) {
+    return `Score must be ${MIN_SCORE}–${MAX_SCORE}`
   }
+
+  // Return null if validation passes completely
+  return null
 }
-
 
 // Most Dangerous Silent Failure in this file:
 // Returning `null` for Success Combined with Unchecked `NaN`:
@@ -27,3 +32,6 @@ export function validateInternForm(name: string, score: number): void {
 // The `assert` checks enforce developer-facing preconditions (type invariants), ensuring the function receives valid contract parameters.
 // If an assertion fails, it throws unconditionally as an Uncaught Error—halting execution immediately because it indicates a programmer bug upstream.
 // The validation logic below it handles expected domain/user input errors, returning a standard string (or throwing a caught UI error) so the application can gracefully display feedback to the user.
+
+// Inconsistent returns mixing booleans, strings, and thrown errors.
+// Fix first: Inconsistent returns, since it forces components to guess how to handle failures.

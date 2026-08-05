@@ -7,7 +7,7 @@ function AddInternForm() {
 
   function handleSubmit(): void {
     if (!isValid()) return
-    addIntern({ id: interns.length + 1, ...form })
+    addIntern({ ...form, id: interns.length + 1 } as typeof form & { id: number })
     handleReset()
   }
 
