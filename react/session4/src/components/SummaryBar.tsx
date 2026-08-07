@@ -1,29 +1,19 @@
-import { useInterns } from '../contexts/intern-context'
+interface SummaryBarProps {
+  total: number
+  presentCount: number
+  averageScore: number
+}
 
-export default function SummaryBar() {
-  const { interns } = useInterns()
-
-  const total = interns.length
-
-  const present = interns.filter(
-    (intern) => intern.isPresent
-  ).length
-
-  const average =
-    total === 0
-      ? 0
-      : (
-          interns.reduce(
-            (sum, intern) => sum + intern.score,
-            0
-          ) / total
-        ).toFixed(1)
-
+export function SummaryBar({
+  total,
+  presentCount,
+  averageScore,
+}: SummaryBarProps) {
   return (
     <div>
-      <p>Total Interns: {total}</p>
-      <p>Present: {present}</p>
-      <p>Average Score: {average}</p>
+      <p>Total: {total}</p>
+      <p>Present: {presentCount}</p>
+      <p>Average Score: {averageScore}</p>
     </div>
   )
 }

@@ -31,7 +31,14 @@ class InternTracker {
   }
 
   // Public method
+  getLastFetchedAt(): Date {
+    return this.#lastFetchedAt;
+  }
+
+  // Public method
   getById(id: number): Intern | undefined {
+    // #buildUrl would be used here for a real fetch: fetch(this.#buildUrl(id))
+    void this.#buildUrl(id)
     return this.#localCache.get(id);
   }
 

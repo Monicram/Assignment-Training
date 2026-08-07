@@ -3,11 +3,12 @@ import { useInterns } from '../contexts/intern-context'
 
 function AddInternForm() {
   const { form, error, handleChange, handleReset, isValid } = useInternForm()
-  const { addIntern, interns } = useInterns()
+  const { addIntern } = useInterns()
 
   function handleSubmit(): void {
     if (!isValid()) return
-    addIntern({ id: interns.length + 1, ...form })
+    // addIntern expects the intern data without an id (id is assigned internally)
+    addIntern(form)
     handleReset()
   }
 
