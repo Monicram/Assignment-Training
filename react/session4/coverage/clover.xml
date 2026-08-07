@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1784309359469" clover="3.2.0">
-  <project timestamp="1784309359469" name="All files">
-    <metrics statements="70" coveredstatements="69" conditionals="53" coveredconditionals="41" methods="39" coveredmethods="39" elements="162" coveredelements="149" complexity="0" loc="70" ncloc="70" packages="4" files="11" classes="11"/>
+<coverage generated="1785414519667" clover="3.2.0">
+  <project timestamp="1785414519667" name="All files">
+    <metrics statements="96" coveredstatements="88" conditionals="62" coveredconditionals="48" methods="55" coveredmethods="49" elements="213" coveredelements="185" complexity="0" loc="96" ncloc="96" packages="5" files="17" classes="17"/>
     <package name="components">
-      <metrics statements="43" coveredstatements="43" conditionals="34" coveredconditionals="25" methods="22" coveredmethods="22"/>
+      <metrics statements="37" coveredstatements="37" conditionals="32" coveredconditionals="24" methods="20" coveredmethods="20"/>
       <file name="AddInternForm.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\components\AddInternForm.tsx">
         <metrics statements="6" coveredstatements="6" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
         <line num="5" count="51" type="stmt"/>
         <line num="6" count="51" type="stmt"/>
         <line num="9" count="6" type="cond" truecount="2" falsecount="0"/>
-        <line num="10" count="2" type="stmt"/>
         <line num="11" count="2" type="stmt"/>
-        <line num="14" count="51" type="stmt"/>
+        <line num="12" count="2" type="stmt"/>
+        <line num="15" count="51" type="stmt"/>
       </file>
       <file name="InternListWithCallback.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\components\InternListWithCallback.tsx">
         <metrics statements="9" coveredstatements="9" conditionals="4" coveredconditionals="2" methods="5" coveredmethods="5"/>
@@ -54,14 +54,8 @@
         <line num="69" count="2" type="stmt"/>
       </file>
       <file name="SummaryBar.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\components\SummaryBar.tsx">
-        <metrics statements="7" coveredstatements="7" conditionals="2" coveredconditionals="1" methods="3" coveredmethods="3"/>
-        <line num="4" count="3" type="stmt"/>
-        <line num="6" count="3" type="stmt"/>
-        <line num="8" count="3" type="stmt"/>
-        <line num="9" count="9" type="stmt"/>
-        <line num="13" count="3" type="cond" truecount="1" falsecount="1"/>
-        <line num="17" count="9" type="stmt"/>
-        <line num="22" count="3" type="stmt"/>
+        <metrics statements="1" coveredstatements="1" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
+        <line num="12" count="5" type="stmt"/>
       </file>
       <file name="ThemedCard.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\components\ThemedCard.tsx">
         <metrics statements="2" coveredstatements="2" conditionals="10" coveredconditionals="7" methods="1" coveredmethods="1"/>
@@ -70,7 +64,26 @@
       </file>
     </package>
     <package name="contexts">
-      <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
+      <metrics statements="24" coveredstatements="18" conditionals="7" coveredconditionals="3" methods="14" coveredmethods="9"/>
+      <file name="intern-context.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\contexts\intern-context.tsx">
+        <metrics statements="16" coveredstatements="11" conditionals="3" coveredconditionals="1" methods="10" coveredmethods="5"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="33" count="0" type="cond" truecount="0" falsecount="1"/>
+        <line num="35" count="2" type="stmt"/>
+        <line num="36" count="2" type="stmt"/>
+        <line num="38" count="2" type="stmt"/>
+        <line num="39" count="1" type="stmt"/>
+        <line num="40" count="0" type="stmt"/>
+        <line num="46" count="0" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="56" count="1" type="stmt"/>
+        <line num="60" count="0" type="stmt"/>
+        <line num="63" count="2" type="stmt"/>
+        <line num="73" count="2" type="stmt"/>
+        <line num="75" count="2" type="cond" truecount="1" falsecount="1"/>
+        <line num="76" count="0" type="stmt"/>
+        <line num="79" count="2" type="stmt"/>
+      </file>
       <file name="theme-context.tsx" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\contexts\theme-context.tsx">
         <metrics statements="8" coveredstatements="7" conditionals="4" coveredconditionals="2" methods="4" coveredmethods="4"/>
         <line num="11" count="8" type="stmt"/>
@@ -84,7 +97,7 @@
       </file>
     </package>
     <package name="hooks">
-      <metrics statements="17" coveredstatements="17" conditionals="15" coveredconditionals="14" methods="11" coveredmethods="11"/>
+      <metrics statements="21" coveredstatements="21" conditionals="12" coveredconditionals="11" methods="13" coveredmethods="13"/>
       <file name="useCounter.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\hooks\useCounter.ts">
         <metrics statements="5" coveredstatements="5" conditionals="5" coveredconditionals="5" methods="6" coveredmethods="6"/>
         <line num="23" count="8" type="stmt"/>
@@ -94,19 +107,26 @@
         <line num="37" count="8" type="stmt"/>
       </file>
       <file name="useInternForm.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\hooks\useInternForm.ts">
-        <metrics statements="12" coveredstatements="12" conditionals="10" coveredconditionals="9" methods="5" coveredmethods="5"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="23" count="67" type="stmt"/>
-        <line num="24" count="67" type="stmt"/>
-        <line num="29" count="41" type="stmt"/>
-        <line num="30" count="41" type="stmt"/>
-        <line num="39" count="4" type="stmt"/>
-        <line num="40" count="4" type="stmt"/>
-        <line num="44" count="10" type="cond" truecount="2" falsecount="0"/>
-        <line num="45" count="6" type="cond" truecount="4" falsecount="0"/>
-        <line num="46" count="5" type="stmt"/>
-        <line num="47" count="5" type="stmt"/>
-        <line num="50" count="67" type="stmt"/>
+        <metrics statements="14" coveredstatements="14" conditionals="6" coveredconditionals="5" methods="5" coveredmethods="5"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="29" count="62" type="stmt"/>
+        <line num="30" count="62" type="stmt"/>
+        <line num="35" count="38" type="stmt"/>
+        <line num="37" count="38" type="stmt"/>
+        <line num="49" count="4" type="stmt"/>
+        <line num="50" count="4" type="stmt"/>
+        <line num="54" count="9" type="stmt"/>
+        <line num="56" count="9" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="5" type="stmt"/>
+        <line num="58" count="5" type="stmt"/>
+        <line num="61" count="4" type="stmt"/>
+        <line num="62" count="4" type="stmt"/>
+        <line num="65" count="62" type="stmt"/>
+      </file>
+      <file name="useInternSearch.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\hooks\useInternSearch.ts">
+        <metrics statements="2" coveredstatements="2" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
       </file>
     </package>
     <package name="test">
@@ -115,6 +135,33 @@
         <metrics statements="2" coveredstatements="2" conditionals="0" coveredconditionals="0" methods="2" coveredmethods="2"/>
         <line num="6" count="35" type="stmt"/>
         <line num="14" count="35" type="stmt"/>
+      </file>
+    </package>
+    <package name="utils">
+      <metrics statements="12" coveredstatements="10" conditionals="11" coveredconditionals="10" methods="6" coveredmethods="5"/>
+      <file name="generate-id.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\utils\generate-id.ts">
+        <metrics statements="1" coveredstatements="1" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
+        <line num="5" count="3" type="stmt"/>
+      </file>
+      <file name="intern-request.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\utils\intern-request.ts">
+        <metrics statements="3" coveredstatements="1" conditionals="1" coveredconditionals="0" methods="2" coveredmethods="1"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="19" count="0" type="stmt"/>
+        <line num="21" count="0" type="stmt"/>
+      </file>
+      <file name="intern-utils.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\utils\intern-utils.ts">
+        <metrics statements="3" coveredstatements="3" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="13" count="8" type="stmt"/>
+        <line num="15" count="8" type="stmt"/>
+        <line num="17" count="32" type="cond" truecount="2" falsecount="0"/>
+      </file>
+      <file name="intern-validation.ts" path="C:\Users\monic\Downloads\Training Assignment\react\session4\src\utils\intern-validation.ts">
+        <metrics statements="5" coveredstatements="5" conditionals="6" coveredconditionals="6" methods="1" coveredmethods="1"/>
+        <line num="5" count="16" type="cond" truecount="2" falsecount="0"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="9" count="10" type="cond" truecount="4" falsecount="0"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="13" count="7" type="stmt"/>
       </file>
     </package>
   </project>

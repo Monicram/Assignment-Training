@@ -39,3 +39,9 @@ export function useTheme(): ThemeContextType {
 
 // useTheme() only be used inside a React component or custom hook.
 // Calling it in a normal function gives an "Invalid hook call" error.
+
+// Testability — theme-context.tsx
+// Q1 Predictable output? YES — renders the same UI for the same props or context values.
+// Q2 No external deps? YES — no server or database calls.
+// Q3 Dependencies injectable? PARTIAL — if it consumes Context directly, a Provider must be supplied during testing.
+// Verdict: MODERATELY TESTABLE

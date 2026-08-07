@@ -1,0 +1,22 @@
+// Task 4.1
+
+// Snippet A
+// Pattern: Hard-coded dependency
+// FIRST Principle: Dependencies should be injectable.
+// Fix: Pass Date.now() and Math.random() as parameters.
+
+// Snippet B
+// Pattern: Hard-coded dependency
+// FIRST Principle: Dependencies should be injectable.
+// Fix: Pass the analytics client as a parameter.
+
+// Snippet C
+// Pattern: Does too many things
+// FIRST Principle: Separate pure logic from side effects.
+// Fix: Move request preparation to a pure function and keep fetch,
+// navigation and localStorage in the caller.
+
+// Snippet D
+// Pattern: Global state
+// FIRST Principle: Avoid shared mutable state.
+// Fix: Do not use a global variable. Pass the data as a parameter.

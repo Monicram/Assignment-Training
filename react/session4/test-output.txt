@@ -1,0 +1,58 @@
+
+> session4@0.0.0 test:run
+> vitest run
+
+
+[1m[30m[46m RUN [49m[39m[22m [36mv4.1.10 [39m[90mC:/Users/monic/Downloads/Training Assignment/react/session4[39m
+
+[90mstdout[2m | src/components/ScoreStats.test.tsx[2m > [22m[2mshows loading state initially
+[22m[39mRecalculating stats...
+
+[90mstdout[2m | src/components/ScoreStats.test.tsx[2m > [22m[2mshows intern data after loading completes
+[22m[39mRecalculating stats...
+
+ [32m✓[39m src/components/ThemedCard.test.tsx [2m([22m[2m10 tests[22m[2m)[22m[32m 259[2mms[22m[39m
+[90mstdout[2m | src/components/InternListWithCallback.test.tsx[2m > [22m[2mrenders all interns from context
+[22m[39mInternRow rendered: Rahul
+InternRow rendered: Priya
+InternRow rendered: Amit
+
+[90mstdout[2m | src/components/InternListWithCallback.test.tsx[2m > [22m[2mrenders correct number of remove buttons
+[22m[39mInternRow rendered: Rahul
+InternRow rendered: Priya
+InternRow rendered: Amit
+
+[90mstdout[2m | src/components/InternListWithCallback.test.tsx[2m > [22m[2mcalls removeIntern with the correct id
+[22m[39mInternRow rendered: Rahul
+InternRow rendered: Priya
+InternRow rendered: Amit
+
+ [32m✓[39m src/components/Navbar.test.tsx [2m([22m[2m4 tests[22m[2m)[22m[33m 479[2mms[22m[39m
+ [32m✓[39m src/components/InternListWithCallback.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 493[2mms[22m[39m
+[90mstdout[2m | src/components/ScoreStats.test.tsx[2m > [22m[2mshows intern data after loading completes
+[22m[39mRecalculating stats...
+
+[90mstdout[2m | src/components/ScoreStats.test.tsx[2m > [22m[2mmultiple statistics appear after data loads
+[22m[39mRecalculating stats...
+
+ [32m✓[39m src/components/InternRow.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 384[2mms[22m[39m
+ [32m✓[39m src/test/self-learning.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 741[2mms[22m[39m
+   [33m[2m✓[22m[39m tab moves focus through AddInternForm inputs [33m 668[2mms[22m[39m
+[90mstdout[2m | src/components/ScoreStats.test.tsx[2m > [22m[2mmultiple statistics appear after data loads
+[22m[39mRecalculating stats...
+
+ [32m✓[39m src/components/ScoreStats.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[33m 1180[2mms[22m[39m
+   [33m[2m✓[22m[39m shows intern data after loading completes [33m 583[2mms[22m[39m
+   [33m[2m✓[22m[39m multiple statistics appear after data loads [33m 529[2mms[22m[39m
+ [32m✓[39m src/components/AddInternForm.test.tsx [2m([22m[2m8 tests[22m[2m)[22m[33m 1734[2mms[22m[39m
+       [33m[2m✓[22m[39m updates name when user types [33m 470[2mms[22m[39m
+       [33m[2m✓[22m[39m calls addIntern with intern data when form is submitted [33m 313[2mms[22m[39m
+ [32m✓[39m src/components/QueryDemo.test.tsx [2m([22m[2m3 tests[22m[2m)[22m[32m 103[2mms[22m[39m
+ [32m✓[39m src/hooks/useCounter.test.ts [2m([22m[2m5 tests[22m[2m)[22m[32m 28[2mms[22m[39m
+ [32m✓[39m src/hooks/useInternForm.test.ts [2m([22m[2m4 tests[22m[2m)[22m[32m 29[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m10 passed[39m[22m[90m (10)[39m
+[2m      Tests [22m [1m[32m46 passed[39m[22m[90m (46)[39m
+[2m   Start at [22m 15:45:54
+[2m   Duration [22m 7.90s[2m (transform 699ms, setup 4.71s, import 2.57s, tests 5.43s, environment 28.32s)[22m
+
